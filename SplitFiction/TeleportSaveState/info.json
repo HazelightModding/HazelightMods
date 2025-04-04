@@ -1,17 +1,17 @@
 {
-    "mod_id": "ToggleVolumes",
-    "name": "Toggle Volumes",
-    "description": "Show and filter different volumes in-game",
+    "mod_id": "TeleportSaveState",
+    "name": "Teleport to saved positions",
+    "description": "Teleport to multiple saved positions and checkpoints",
     "type": "Angelscript",
     "author": "Lemuura",
     "logo": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/sf_default.png",
-    "source_url": "https://github.com/HazelightModding/HazelightMods/tree/main/SplitFiction/ToggleVolumes",
+    "source_url": "https://github.com/HazelightModding/HazelightMods/tree/main/SplitFiction/TeleportSaveState",
     "hidden": false,
     "latestVersions": {
         "alpha": null,
         "beta": null,
         "release": {
-            "link": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/ToggleVolumes",
+            "link": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/TeleportSaveState",
             "dependencies": [
                 {
                     "mod_id": "SFMM",

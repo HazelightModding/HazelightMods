@@ -1,0 +1,22 @@
+{
+    "mod_id": "EnableDebugCamera",
+    "name": "Enables the Debug Camera",
+    "description": "Adds an option to the dev shortcuts menu for the debug camera.",
+    "type": "Angelscript",
+    "author": "Lemuura",
+    "logo": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/sf_default.png",
+    "source_url": "https://github.com/HazelightModding/HazelightMods/tree/main/SplitFiction/EnableDebugCamera",
+    "hidden": false,
+    "latestVersions": {
+        "alpha": null,
+        "beta": null,
+        "release": {
+            "link": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/EnableDebugCamera",
+            "dependencies": [],
+            "version": "1.0.0",
+            "created_at": "2025-04-04T19:20:00Z",
+            "game_version": "^1.0.0.0"
+        }
+    },
+    "tags": []
+}

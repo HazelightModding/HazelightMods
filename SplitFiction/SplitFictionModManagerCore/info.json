@@ -1,0 +1,22 @@
+{
+    "mod_id": "SFMM",
+    "name": "Split Fiction Mod Manager",
+    "description": "Provides some core features that makes modding easier",
+    "type": "Angelscript",
+    "author": "Lemuura",
+    "logo": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/sf_default.png",
+    "source_url": "https://github.com/HazelightModding/HazelightMods/tree/main/SplitFiction/SFModManager",
+    "hidden": false,
+    "latestVersions": {
+        "alpha": null,
+        "beta": null,
+        "release": {
+            "link": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/SFModManager",
+            "dependencies": [],
+            "version": "1.0.0",
+            "created_at": "2025-04-04T19:20:00Z",
+            "game_version": "^1.0.0.0"
+        }
+    },
+    "tags": []
+}

@@ -1,0 +1,22 @@
+{
+    "mod_id": "ToggleInGameTimer",
+    "name": "Toggle In-Game Timer Dev Input",
+    "description": "Adds an option to toggle the in-game timer in the dev shortcuts menu",
+    "type": "Angelscript",
+    "author": "Lemuura",
+    "logo": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/sf_default.png",
+    "source_url": "https://github.com/HazelightModding/HazelightMods/tree/main/SplitFiction/ToggleInGameTimer",
+    "hidden": false,
+    "latestVersions": {
+        "alpha": null,
+        "beta": null,
+        "release": {
+            "link": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/ToggleInGameTimer",
+            "dependencies": [],
+            "version": "1.0.0",
+            "created_at": "2025-04-04T19:20:00Z",
+            "game_version": "^1.0.0.0"
+        }
+    },
+    "tags": []
+}
