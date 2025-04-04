@@ -1,0 +1,16 @@
+{
+    "ID": "ToggleVolumes",
+    "Name": "Toggle Volumes",
+    "Description": "Show and filter different volumes in-game",
+    "Type": "Angelscript",
+    "Author": "Lemuura",
+    "Version": "1.0.0",
+    "GameVersion": "1.0.0.0",
+    "DownloadLink": "https://github.com/HazelightModding/HazelightMods/SplitFiction/ToggleVolumes/",
+    "Dependencies":[
+        {
+            "ID": "ModManagerCore",
+            "MinVersion": "1.0.0"
+        }
+    ]
+}
