@@ -1,7 +1,8 @@
 {
     "mod_id": "SFMM",
     "name": "Split Fiction Mod Manager",
-    "description": "Provides some core features that makes modding easier",
+    "short_description": "Provides some core features that makes modding easier",
+    "description_url": "", 
     "type": "Angelscript",
     "author": "Lemuura",
     "logo": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/sf_default.png",

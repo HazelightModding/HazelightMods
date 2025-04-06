@@ -1,7 +1,8 @@
 {
     "mod_id": "EnableDevMenuInMainMenu",
     "name": "Enable Dev Menu in Main Menu",
-    "description": "Enables the Dev Menu in the Main Menu. Launch the game with '-devmenu' as a launch argument. Not available on friends pass.",
+    "short_description": "Enables the Dev Menu in the Main Menu. Launch the game with '-devmenu' as a launch argument. Not available on friends pass.",
+    "description_url": "", 
     "type": "Angelscript",
     "author": "Lemuura",
     "logo": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/sf_default.png",

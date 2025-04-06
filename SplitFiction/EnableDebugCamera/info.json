@@ -1,7 +1,8 @@
 {
     "mod_id": "EnableDebugCamera",
     "name": "Enables the Debug Camera",
-    "description": "Adds an option to the dev shortcuts menu for the debug camera.",
+    "short_description": "Adds an option to the dev shortcuts menu for the debug camera.",
+    "description_url": "", 
     "type": "Angelscript",
     "author": "Lemuura",
     "logo": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/sf_default.png",

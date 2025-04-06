@@ -1,7 +1,8 @@
 {
     "mod_id": "EnableHidePauseMenu",
     "name": "Enable Hide Pause Menu option",
-    "description": "Enables the 'Hide Pause Menu' option in the pause menu, if dev shortcuts are enabled.",
+    "short_description": "Enables the 'Hide Pause Menu' option in the pause menu, if dev shortcuts are enabled.",
+    "description_url": "", 
     "type": "Angelscript",
     "author": "Lemuura",
     "logo": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/sf_default.png",

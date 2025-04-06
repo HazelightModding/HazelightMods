@@ -1,7 +1,8 @@
 {
     "mod_id": "TeleportSaveState",
     "name": "Teleport to saved positions",
-    "description": "Teleport to multiple saved positions and checkpoints",
+    "short_description": "Teleport to multiple saved positions and checkpoints",
+    "description_url": "", 
     "type": "Angelscript",
     "author": "Lemuura",
     "logo": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/sf_default.png",

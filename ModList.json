@@ -2,35 +2,35 @@
     "split_fiction_mods": [
         {
             "name": "Split Fiction Mod Manager",
-            "info_url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/SFModManager"
+            "url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/SFModManager/info.json"
         },
         {
             "name": "Enable Dev Menu in Main Menu",
-            "info_url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/EnableDevMenuInMainMenu"
+            "url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/EnableDevMenuInMainMenu/info.json"
         },
         {
             "name": "Toggle Volumes",
-            "info_url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/ToggleVolumes"
+            "url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/ToggleVolumes/info.json"
         },
         {
             "name": "Teleport To Save States",
-            "info_url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/TeleportSaveState"
+            "url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/TeleportSaveState/info.json"
         },
         {
             "name": "Toggle In-Game Timer",
-            "info_url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/ToggleInGameTimer"
+            "url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/ToggleInGameTimer/info.json"
         },
         {
             "name": "Send Input To Both Players",
-            "info_url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/SendInputToBothPlayers"
+            "url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/SendInputToBothPlayers/info.json"
         },
         {
             "name": "Enable Debug Camera",
-            "info_url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/EnableDebugCamera"
+            "url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/EnableDebugCamera/info.json"
         },
         {
             "name": "Enable Hide Pause Menu Dev Input",
-            "info_url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/EnableHidePauseMenu"
+            "url": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/EnableHidePauseMenu/info.json"
         }
     ],
     "it_takes_two_mods": []

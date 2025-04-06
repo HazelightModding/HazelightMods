@@ -1,7 +1,8 @@
 {
     "mod_id": "SendInputToBothPlayers",
     "name": "Send Input To Both Players",
-    "description": "Adds an option in the dev shortcuts menu to send inputs to both players.",
+    "short_description": "Adds an option in the dev shortcuts menu to send inputs to both players.",
+    "description_url": "", 
     "type": "Angelscript",
     "author": "Lemuura",
     "logo": "https://raw.githubusercontent.com/HazelightModding/HazelightMods/refs/heads/main/SplitFiction/sf_default.png",
