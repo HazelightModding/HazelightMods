@@ -3,6 +3,7 @@ enum EModVisibleVolumes
 	All,
 	BlockingVolumes,
 	RespawnPoints,
+	ProgressPoints,
 	DeathVolumes,
 	CameraVolumes,
 	CapabilityVolumes,
@@ -10,7 +11,6 @@ enum EModVisibleVolumes
 	ActorTriggers,
 	VOTriggers,
 	SplineTriggers,
-
 	None
 }
 
@@ -58,9 +58,6 @@ class UToggleVolumesCapability : UHazePlayerCapability
 	EModVisibleVolumes VolumeVisibility = EModVisibleVolumes::All;
 	EModVolumeLineThickness LineThickness = EModVolumeLineThickness::Thin;
 	TArray<ABrush> Brushes;
-	FVector LastLocation = FVector::ZeroVector;
-	float TimeSinceLastScan = 0.0;
-	float OverlapSize = 800000;
 	bool bDisplayNames = true;
 
 	UPROPERTY(Config)
@@ -196,8 +193,8 @@ class UToggleVolumesCapability : UHazePlayerCapability
 		{
 			for (auto Brush : Brushes)
 			{
-				if (Brush == nullptr) continue;
-				SetLineThickness(Brush.BrushComponent);
+				if (IsValid(Brush) && IsValid(Brush.BrushComponent))
+					SetLineThickness(Brush.BrushComponent);
 			}
 		}
 	}
@@ -245,6 +242,7 @@ class UToggleVolumesCapability : UHazePlayerCapability
 			case EModVisibleVolumes::All: 					VisibilityName = "All"; break;
 			case EModVisibleVolumes::BlockingVolumes: 		VisibilityName = "BlockingVolumes"; break;
 			case EModVisibleVolumes::RespawnPoints: 		VisibilityName = "RespawnPoints"; break;
+			case EModVisibleVolumes::ProgressPoints: 		VisibilityName = "ProgressPoints"; break;
 			case EModVisibleVolumes::DeathVolumes: 			VisibilityName = "DeathVolumes"; break;
 			case EModVisibleVolumes::CameraVolumes: 		VisibilityName = "CameraVolumes"; break;
 			case EModVisibleVolumes::CapabilityVolumes: 	VisibilityName = "CapabilityVolumes"; break;
@@ -303,42 +301,23 @@ class UToggleVolumesCapability : UHazePlayerCapability
 	void OnActivated()
 	{
 		Mod::Log("Showing Volumes", 2.0);
-		PerformOverlapTrace();
+		GetAllBrushes();
 		SetBrushVisibility(true);
 		SetNameVisibility(bDisplayNames);
 	}
 
-	void PerformOverlapTrace()
+	TArray<UPrimitiveComponent> OtherComponentsToVisualize;
+	void GetAllBrushes()
 	{
-		TArray<FHazeTraceSettings>  Traces;
-		Traces.Add(Trace::InitChannel(ECollisionChannel::ECC_WorldStatic));
-		Traces.Add(Trace::InitChannel(ECollisionChannel::ECC_WorldDynamic));
-		Traces.Add(Trace::InitChannel(ECollisionChannel::ECC_PhysicsBody));
-		Traces.Add(Trace::InitChannel(ECollisionChannel::ECC_Pawn));
-		Traces.Add(Trace::InitChannel(ECollisionChannel::ECC_GameTraceChannel1));
-		Traces.Add(Trace::InitChannel(ECollisionChannel::ECC_GameTraceChannel2));
-		Traces.Add(Trace::InitChannel(ECollisionChannel::ECC_GameTraceChannel3));
-		Traces.Add(Trace::InitChannel(ECollisionChannel::ECC_GameTraceChannel8));
-		Traces.Add(Trace::InitChannel(ECollisionChannel::ECC_GameTraceChannel12));
-		for (FHazeTraceSettings& Trace : Traces)
+		for (auto Actor : Mod::GetAllActors())
 		{
-			Trace.UseSphereShape(OverlapSize);
-			LastLocation = Player.GetViewLocation();
-			FOverlapResultArray Overlaps = Trace.QueryOverlaps(LastLocation);
-			for (FOverlapResult Overlap : Overlaps.OverlapResults)
+			if (Actor.IsA(ABrush.Get()))
 			{
-
-				if (!Overlap.Actor.IsA(ABrush))
-					continue;
-
-				ABrush OverlappedActor = Cast<ABrush>(Overlap.Actor);
-				//Mod::Log("Overlapped Brush Actor: " + OverlappedActor.Name);
-
-				Brushes.AddUnique(OverlappedActor);
-			}
+				ABrush Brush = Cast<ABrush>(Actor);
+				if (Brush != nullptr)
+					Brushes.AddUnique(Brush);
+			}			
 		}
-
-		TimeSinceLastScan = 0.0;
 	}
 
 	void SetBrushVisibility(bool bIsVisible)
@@ -371,6 +350,9 @@ class UToggleVolumesCapability : UHazePlayerCapability
 
 	void SetLineThickness(UBrushComponent BrushComp)
 	{
+		if (BrushComp == nullptr)
+			return;
+
 		switch(LineThickness)
 		{
 			case EModVolumeLineThickness::Thin: BrushComp.LineThickness = 1.0f; break;
@@ -386,27 +368,36 @@ class UToggleVolumesCapability : UHazePlayerCapability
 		for (auto Brush : Brushes)
 		{
 			if (Brush == nullptr)
+			{
+				Brushes.Remove(Brush);
 				continue;
+			}
 
 			auto BrushComponent = Brush.BrushComponent;
 			if (BrushComponent == nullptr) 
 				continue;
 
 			UTextRenderComponent NameTag = UTextRenderComponent::GetOrCreate(Brush, n"ModVolumeVisibilityNameTag");
-			NameTag.SetText(FText::FromName(Brush.Name));
-			NameTag.SetTextRenderColor(GetColorForBrush(Brush.Name).ToFColor(false));
 
-			NameTag.SetWorldSize(100.0f);
-			NameTag.SetHorizontalAlignment(EHorizTextAligment::EHTA_Center);
-			NameTag.SetVerticalAlignment(EVerticalTextAligment::EVRTA_TextCenter);
-			NameTag.SetRelativeLocation(FVector(0,0,10));
-			NameTag.SetRelativeRotation(FRotator(0,0,0));
-			NameTag.SetAbsolute(false, false, true);
+			if (!IsValid(NameTag))
+				continue;
 
+			if (bIsVisible)
+			{
+				NameTag.SetText(FText::FromName(Brush.Name));
+				NameTag.SetTextRenderColor(GetColorForBrush(Brush.Name).ToFColor(false));
+
+				NameTag.SetWorldSize(100.0f);
+				NameTag.SetHorizontalAlignment(EHorizTextAligment::EHTA_Center);
+				NameTag.SetVerticalAlignment(EVerticalTextAligment::EVRTA_TextCenter);
+				NameTag.SetRelativeLocation(FVector(0,0,10));
+				NameTag.SetRelativeRotation(FRotator(0,0,0));
+				NameTag.SetAbsolute(false, false, true);
+			}
+			
 			NameTag.SetVisibility(bIsVisible);
 			NameTag.MarkRenderStateDirty();
 		}
-		
 	}
 
 	FLinearColor GetColorForBrush(FName Name)
@@ -436,6 +427,7 @@ class UToggleVolumesCapability : UHazePlayerCapability
 			case EModVisibleVolumes::All: 																bShouldBeVisible = true; break;
 			case EModVisibleVolumes::BlockingVolumes: 		if (BrushName.Contains("BlockingVolume")) 	bShouldBeVisible = true; break;
 			case EModVisibleVolumes::RespawnPoints: 		if (BrushName.Contains("RespawnPoint")) 	bShouldBeVisible = true; break;
+			case EModVisibleVolumes::ProgressPoints: 		if (BrushName.Contains("ProgressPoint")) 	bShouldBeVisible = true; break;
 			case EModVisibleVolumes::CameraVolumes: 		if (BrushName.Contains("Camera")) 			bShouldBeVisible = true; break;
 			case EModVisibleVolumes::DeathVolumes: 			if (BrushName.Contains("Death")) 			bShouldBeVisible = true; break;
 			case EModVisibleVolumes::CapabilityVolumes: 	if (BrushName.Contains("Capability")) 		bShouldBeVisible = true; break;
@@ -462,32 +454,33 @@ class UToggleVolumesCapability : UHazePlayerCapability
 	UFUNCTION(BlueprintOverride)
 	void TickActive(float DeltaTime)
 	{
-		TimeSinceLastScan += DeltaTime;
-
 		if (!ShouldShowVolumes)
 			return;
-		
-		bool IsFarAwayFromOrigin = !LastLocation.IsWithinDist(Player.GetViewLocation(), OverlapSize / 2);
-		if (IsFarAwayFromOrigin)
-		{
-			PerformOverlapTrace();
-			SetBrushVisibility(ShouldShowVolumes);
-			SetNameVisibility(bDisplayNames);
-		}
+	
 
 		for (auto Brush : Brushes)
 		{
+			if (Brush == nullptr)
+			{
+				Brushes.Remove(Brush);
+				continue;
+			}
+
 			UTextRenderComponent NameTag = UTextRenderComponent::Get(Brush, n"ModVolumeVisibilityNameTag");
 			if (NameTag == nullptr)
 				continue;
+				
 
 			if (!NameTag.IsVisible())
 				continue;
 
-			const FVector LookAtDirection = Player.GetViewLocation() - NameTag.WorldLocation;
-			FRotator LookAtRotation = FRotator::MakeFromX(LookAtDirection);
-			LookAtRotation.Pitch = 0;
-			NameTag.SetWorldRotation(LookAtRotation);
+			FVector ToCamera = (Player.GetViewLocation() - NameTag.WorldLocation).GetSafeNormal();
+			FVector Up = Player.GetViewRotation().RotateVector(FVector::UpVector).GetSafeNormal();
+			FVector Right = Up.CrossProduct(ToCamera).GetSafeNormal();
+			FVector Forward = Right.CrossProduct(Up).GetSafeNormal();
+			FQuat LookAtQuat = FQuat::MakeFromAxes(Forward, Right, Up);
+
+			NameTag.SetWorldRotation(LookAtQuat);
 		}
 	}
 

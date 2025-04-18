@@ -345,7 +345,7 @@ class UTeleportSaveStateCapability : UHazePlayerCapability
 		if (bTeleportingWithProgressPoint)
 		{
 			FString SavedProgressPoint = Progress::GetProgressPointRefID(Slot.ProgressPoint);
-			Mod::Log("Restarting from Progress Point: " + SavedProgressPoint, 2.0);
+			Mod::Log("Restarting from Progress Point: " + SavedProgressPoint);
 			Progress::RestartFromProgressPoint(SavedProgressPoint, false);
 		}
 		else
@@ -363,7 +363,7 @@ class UTeleportSaveStateCapability : UHazePlayerCapability
 				TeleportingActor.ActorVelocity = Slot.Velocity;
 			}
 
-			Mod::Log("Teleporting to: " + Slot.Location, 2.0);
+			Mod::Log("Teleporting to: " + Slot.Location);
 		}
 
 		StopTeleport();

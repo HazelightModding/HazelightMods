@@ -1,7 +1,7 @@
 {
     "mod_id": "EnableHidePauseMenu",
-    "name": "Enable Hide Pause Menu option",
-    "short_description": "Enables the 'Hide Pause Menu' option in the pause menu, if dev shortcuts are enabled.",
+    "name": "Hide Pause Menu",
+    "short_description": "Enables the 'Hide Pause Menu' option in the pause menu, if dev shortcuts are enabled. Toggle with 'Y' or 'Gamepad Select'.",
     "description_url": "", 
     "type": "Angelscript",
     "author": "Lemuura",

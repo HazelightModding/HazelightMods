@@ -1,7 +1,7 @@
 {
     "mod_id": "TeleportSaveState",
     "name": "Teleport to saved positions",
-    "short_description": "Teleport to multiple saved positions and checkpoints",
+    "short_description": "Save up to 5 custom positions and teleport to them at any time.",
     "description_url": "", 
     "type": "Angelscript",
     "author": "Lemuura",

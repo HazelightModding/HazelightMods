@@ -1,6 +1,6 @@
 {
     "mod_id": "ToggleInGameTimer",
-    "name": "Toggle In-Game Timer Dev Input",
+    "name": "Toggle In-Game Timer",
     "short_description": "Adds an option to toggle the in-game timer in the dev shortcuts menu",
     "description_url": "",
     "type": "Angelscript",
