@@ -1,7 +1,7 @@
 {
     "mod_id": "SFMM",
     "name": "Split Fiction Mod Manager",
-    "short_description": "Provides some core features that makes modding easier",
+    "short_description": "SFMM provides core functionality for other mods, such as logging, utility functions like 'GetAllActors' and 'GetActiveLevels', and other mod management functionality.",
     "description_url": "", 
     "type": "Angelscript",
     "author": "Lemuura",
